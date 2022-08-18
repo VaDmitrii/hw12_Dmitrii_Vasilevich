@@ -13,6 +13,8 @@ logger_error = logging.getLogger('error')
 
 
 def load_data(path) -> list[set] | Any:
+    """Чтение данных из файла"""
+
     try:
         with open(path, 'r', encoding='utf-8') as file:
             posts = json.loads(file.read())
@@ -23,6 +25,8 @@ def load_data(path) -> list[set] | Any:
 
 
 def search_post(tag: str) -> str | list[set]:
+    """Поиск и возврат на клиента поста из списка постов в файле json """
+
     post_search = []
     for line in load_data(POST_PATH):
         content = line["content"].replace('!', '')
@@ -32,6 +36,8 @@ def search_post(tag: str) -> str | list[set]:
 
 
 def save_data(picture_name, content) -> None:
+    """ Сохраняет в json файл данные по добавленному посту: изображение и подпись"""
+
     item = {'pic': f'/uploads/images/{picture_name}', 'content': content}
     with open(POST_PATH, 'r', encoding='utf-8') as file:
         data = json.load(file)
