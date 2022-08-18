@@ -13,6 +13,7 @@ ALLOWED_EXTENSIONS = {'jpeg', 'png', 'jpg'}
 logger_info = logging.getLogger("info")
 logger_error = logging.getLogger('error')
 
+
 @loader_blueprint.route("/post", methods=["GET", "POST"])
 def page_post_form():
     return render_template('post_form.html')
